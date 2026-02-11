@@ -1,0 +1,10 @@
+Django>=3.2
+djangorestframework
+numpy
+pandas
+nltk
+textblob
+wordcloud
+pillow
+openpyxl
+django-cors-headers

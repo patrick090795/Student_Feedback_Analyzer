@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Results for {{ subject }}</h1>
+
+      <section>
+        <h2>Summary</h2>
+        <ul>
+          <li>Mean polarity: {{ summary['mean'] }}</li>
+          <li>Median polarity: {{ summary['median'] }}</li>
+          <li>Positive: {{ summary['positive_pct']*100 | round(1) }}%</li>
+          <li>Negative: {{ summary['negative_pct']*100 | round(1) }}%</li>
+          <li>Neutral: {{ summary['neutral_pct']*100 | round(1) }}%</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Interpretation</h2>
+        <ul>
+        {% for line in interpretations %}
+          <li>{{ line }}</li>
+        {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Wordcloud</h2>
+        <img src="{{ wordcloud_url }}" alt="wordcloud" style="max-width:100%">
+      </section>
+
+      <section>
+        <h2>Correlations</h2>
+        {% if correlations %}
+          <ul>
+          {% for k,v in correlations.items() %}
+            <li>{{ k }}: {{ v }}</li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          <p>No correlations computed.</p>
+        {% endif %}
+      </section>
+
+      <a href="/">&larr; Back</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Feedback Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Feedback Analyzer</h1>
+      <form action="/analyze" method="post" enctype="multipart/form-data">
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject">
+          <option value="AI">AI</option>
+          <option value="OT">OT</option>
+        </select>
+
+        <label for="file">Upload Excel file (optional)</label>
+        <input type="file" id="file" name="file" accept=".xls,.xlsx">
+
+        <label for="pasted_comments">Or paste comments (one per line)</label>
+        <textarea id="pasted_comments" name="pasted_comments" rows="6"></textarea>
+
+        <label for="rating_col">Optional: Column name for ratings (for correlation)</label>
+        <input type="text" id="rating_col" name="rating_col">
+
+        <button type="submit" class="btn">Analyze</button>
+      </form>
+
+      <footer>
+        <small>Note: This demo uses TextBlob for sentiment and is intended for exploration.</small>
+      </footer>
+    </div>
+  </body>
+</html>
